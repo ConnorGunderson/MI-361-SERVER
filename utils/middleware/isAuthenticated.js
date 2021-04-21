@@ -3,7 +3,7 @@ require("dotenv").config();
 const jwt = require("express-jwt");
 
 // We are assuming that the JWT will come in the header Authorization but it could come in the req.body or in a query param, you have to decide what works best for you.
-const getTokenFromHeader = (req, res) => {
+const getTokenFromHeader = (req) => {
   if (
     req.headers.authorization &&
     req.headers.authorization.split(" ")[0] === "Bearer"
