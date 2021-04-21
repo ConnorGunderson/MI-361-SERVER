@@ -7,18 +7,19 @@ const router = require("express").Router(),
 const AuthService = require("../utils/services/auth");
 
 router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    await User.findOne({ email }).then(async (user) => {
-      const isUser = await AuthService.verifyPassword(user.password, password)
-      user = AuthService.formatUser(user);
-      const token = await AuthService.generateToken(user)
-      outUser = { user, token };
+  const { email, password } = req.body;
+  await User.findOne({ email }).then(async (user) => {
+    const isUser = await AuthService.verifyPassword(user.password, password)
+    user = AuthService.formatUser(user);
+    const token = await AuthService.generateToken(user)
+    outUser = { user, token };
+    if (user) {
       res.status(200).json(user)
-    })
-  } catch (e) {
-    res.end(e);
-  }
+    }
+  })
+  .catch(e => {
+    res.status(409).end('error/auth-invalid-credentials')
+  })
 });
 
 router.post("/new", async (req, res) => {
