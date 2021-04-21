@@ -10,6 +10,8 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const rawUser = await User.findOne({ email });
+    
+    if (rawUser === null) return res.status(404).end('error/user-not-found')
 
     if (!(await AuthService.verifyPassword(rawUser.password, password))) {
       res.status(409).end("error/wrong-credentials");
@@ -28,7 +30,6 @@ router.post("/login", async (req, res) => {
 router.post("/new", async (req, res) => {
   try {
     let { name, email, password } = req.body;
-    console.log('cool')
     password = await AuthService.hashPassword(password);
     const inDB = await User.findOne({ email });
     const isValid = emailValidator.validate(email);

@@ -28,6 +28,6 @@ app.get('/test', (req, res) => {
   res.end('success')
 })
 
-const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 3000
+const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 4000
 
-app.listen(PORT || 3000, () => console.log("listening on port " + (PORT)));
+app.listen(PORT || 3000, () => console.log("listening on port " + (PORT || 3000)));

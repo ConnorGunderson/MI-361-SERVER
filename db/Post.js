@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"),
+      faker = require('faker')
 
 const postSchema = new mongoose.Schema({
   author: { type: String, required: true },
@@ -6,7 +7,7 @@ const postSchema = new mongoose.Schema({
   dateCreated: { type: Date, default: Date.now() },
   content: { type: String, required: true },
   likes: { type: Number, default: 0 },
-  imageURL: { type: String },
+  imageURL: { type: String, default: faker.image.image() },
 });
 
 const Post = mongoose.model("Post", postSchema);

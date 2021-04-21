@@ -12,7 +12,6 @@ router.get("/user", isAuthenticated, attachCurrentUser, async (req, res) => {
     res.status(200).json(posts);
   } catch (e) {
     console.log(e);
-    console.log("hey");
     res.status(400).end("fail");
   }
 });
@@ -20,8 +19,8 @@ router.get("/user", isAuthenticated, attachCurrentUser, async (req, res) => {
 // route to let the user make a new post if authenticated
 router.post("/new", isAuthenticated, attachCurrentUser, async (req, res) => {
   try {
-    const {author, title, content} = req.body
-    const newPost = await PostService.createNewPost(author, title, content);
+    const {author, title, content, imageURL} = req.body
+    const newPost = await PostService.createNewPost(author, title, content, imageURL);
     if (newPost) {
       res.status(200).end("success");
     } else {

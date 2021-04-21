@@ -19,11 +19,12 @@ class PostService {
     return await Post.findById(id);
   }
 
-  async createNewPost(author, title, content) {
+  async createNewPost(author, title, content, imageURL) {
     const post = await new Post({
       author,
       title,
       content,
+      imageURL
     }).save();
     return post;
   }
