@@ -19,12 +19,11 @@ class PostService {
     return await Post.findById(id);
   }
 
-  async createNewPost() {
+  async createNewPost(author, title, content) {
     const post = await new Post({
-      author: "Connor Gunderson",
-      title: "blue whales can fly",
-      content: "yes they really can",
-      imageURL: "http://placeimg.com/640/480/cats",
+      author,
+      title,
+      content,
     }).save();
     return post;
   }

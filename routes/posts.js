@@ -20,6 +20,7 @@ router.get("/user", isAuthenticated, attachCurrentUser, async (req, res) => {
 // route to let the user make a new post if authenticated
 router.post("/new", isAuthenticated, attachCurrentUser, async (req, res) => {
   try {
+    console.log(req.body.data)
     const newPost = await PostService.createNewPost();
     if (newPost) {
       res.status(200).end("success");
