@@ -13,8 +13,8 @@ router.post("/login", async (req, res) => {
     user = AuthService.formatUser(user);
     const token = await AuthService.generateToken(user)
     outUser = { user, token };
-    if (user) {
-      res.status(200).json(user)
+    if (outUser) {
+      res.status(200).json(outUser)
     }
   })
   .catch(e => {
