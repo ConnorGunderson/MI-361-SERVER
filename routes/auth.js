@@ -28,6 +28,7 @@ router.post("/login", async (req, res) => {
 router.post("/new", async (req, res) => {
   try {
     let { name, email, password } = req.body;
+    console.log('cool')
     password = await AuthService.hashPassword(password);
     const inDB = await User.findOne({ email });
     const isValid = emailValidator.validate(email);
