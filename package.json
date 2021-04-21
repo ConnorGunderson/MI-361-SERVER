@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConnorGunderson/MI-361-Project-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConnorGunderson/MI-361-Project-2/issues"
+  },
+  "homepage": "https://github.com/ConnorGunderson/MI-361-Project-2#readme",
+  "dependencies": {
+    "@types/node": "^14.14.37",
+    "argon2": "^0.27.2",
+    "aws4": "^1.11.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.2.4"
+  }
+}
