@@ -9,21 +9,15 @@ const AuthService = require("../utils/services/auth");
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const rawUser = await User.findOne({ email });
-    
-    if (rawUser === null) return res.status(404).end('error/user-not-found')
-
-    if (!(await AuthService.verifyPassword(rawUser.password, password))) {
-      res.status(409).end("error/wrong-credentials");
-    }
-    let user = AuthService.formatUser(rawUser);
-
-    outUser = { user, token: await AuthService.generateToken(rawUser) };
-
-    res.status(200).json(outUser);
+    await User.findOne({ email }).then(async (user) => {
+      const isUser = await AuthService.verifyPassword(user.password, password)
+      user = AuthService.formatUser(user);
+      const token = await AuthService.generateToken(user)
+      outUser = { user, token };
+      res.status(200).json(user)
+    })
   } catch (e) {
-    console.log(e);
-    res.status(400).end("error/auth-invalid-credentials");
+    res.end(e);
   }
 });
 
