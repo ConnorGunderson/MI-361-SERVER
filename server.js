@@ -24,8 +24,8 @@ app.use(cors());
 app.use("/api/auth", require("./routes/auth")); // authentication
 app.use("/api/posts", require("./routes/posts")); // authentication
 
-app.get('/', (req, res) => {
-  res.end('hey')
+app.get('/test', (req, res) => {
+  res.end('success')
 })
 
 const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 4000

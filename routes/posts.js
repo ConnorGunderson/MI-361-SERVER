@@ -52,7 +52,6 @@ router.get("/all", async (req, res) => {
 // get a specific post by id
 router.get("/:id", async (req, res) => {
   try {
-    console.log("pass");
     const post = await PostService.getPostById(req.params.id);
     res.status(200).json(post);
     res.end("success");
