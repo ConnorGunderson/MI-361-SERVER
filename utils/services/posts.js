@@ -20,11 +20,10 @@ class PostService {
   }
 
   async likePost(id) {
-    console.log(id)
     const post = await Post.findById(id)
     if (post) {
-      post.like += 1
-      return await post.save()
+      post.likes += 1
+      await post.save()
     } else {
       return 'error/post-not-found'
     }
