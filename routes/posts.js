@@ -61,4 +61,14 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post('/like', async (req, res) => {
+  try {
+    await PostService.likePost(req.body.id)
+    res.end('pass')
+  } catch(e) {
+    console.log(e)
+    res.end('error/like-post-error')
+  }
+})
+
 module.exports = router;
